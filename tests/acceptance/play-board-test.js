@@ -27,8 +27,10 @@ module('Acceptance | play board', function(hooks) {
 
     await visit('/');
 
+    //Start game with X
     await click('button','Start New Game With X');
 
+    //Do alternate clicks
     await buttonClickAcceptance(assert, this.element, 0, 'X')
     await buttonClickAcceptance(assert, this.element, 1, 'O')
     await buttonClickAcceptance(assert, this.element, 3, 'X');

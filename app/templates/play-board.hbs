@@ -1,40 +1,66 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 <div class="jumbo">
   <div class="right tomster"></div>
   <h2>Welcome to Play Board!</h2>
-  
-  <button {{action "newGame" "X"}}>Start New Game With X</button>
-  <button {{action "newGame" "O"}}>Start New Game With O</button>
-
-  <button {{action "reset"}}>Reset All</button>
-  <br><br>
-
-  {{#each this.model.boardPosition as |b|}}
-    <div class="row">
-      {{#each b as |k|}}
-        <button id="square{{k}}" class="button" {{action "buttonClick" k}}>{{get this.model.board k}}</button>
-      {{/each}}
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <button class="mdl-cell mdl-button mdl-js-button mdl-button--raised" {{action "newGame" "X"}}>Start New Game With X</button>
+        <button class="mdl-cell mdl-button mdl-js-button mdl-button--raised" {{action "newGame" "O"}}>Start New Game With O</button>
+        <button class="mdl-cell mdl-button mdl-js-button mdl-button--raised" {{action "reset"}}>Reset All</button>
+      </div>
     </div>
-  {{/each}}
+            
+    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+          {{#each this.model.boardPosition as |b|}}
+            <div class="mdc-layout-grid">
+              <div class="mdc-layout-grid__inner">
+                {{#each b as |k|}}
+                  <button class="mdc-layout-grid__cell mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect" id="square{{k}}" {{action "buttonClick" k}}>{{get this.model.board k}}</button>
+                {{/each}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-grid">
+            <div class="mdl-cell">
+              <table> 
+                <caption>Score:</caption>
+                <thead>
+                  <tr>
+                    <th>Player X</th>
+                    <th>Player O</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{this.model.playerXScore}}</td>
+                    <td>{{this.model.playerOScore}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <div class="mdl-cell">
+                              <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
 
-  <h3>Winner : <div id="winner_result">{{this.model.winner}}</div></h3>
-  <br><br>
- 
-  Scorecard :
+          <h3>Winner : 
+              <div class="material-icons" id="winner_result">{{this.model.winner}}</div>
 
-  <table> 
-    <thead>
-      <tr>
-        <th>Player X</th>
-        <th>Player O</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{this.model.playerXScore}}</td>
-        <td>{{this.model.playerOScore}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-
+          </h3>
+        </div>
+      </div>
+    </div>              
+  </div>
 </div>

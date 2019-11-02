@@ -18,10 +18,15 @@ module('Unit | Controller | play-board', function(hooks) {
     assert.equal(controller.get('model.playerOScore'), playerOScore, `Player O Score ${playerOScore}`);
   }
 
-  // Test the Controller actions.
   test('it exists', function(assert) {
     let controller = this.owner.lookup('controller:play-board');
     assert.ok(controller);
+  });
+  
+
+  // Test the Controller actions.
+  test('Test Controller actions', function(assert) {
+    let controller = this.owner.lookup('controller:play-board');
 
     //set model
     controller.set('model', EmberObject.create({ board: Array(9).fill(null),
