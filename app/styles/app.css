@@ -1,0 +1,38 @@
+  
+  .row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  
+  
+  .button {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+    outline:none;
+  }
+
+  td, th {
+    width: 6rem;
+    height: 2rem;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  th {
+    background: lightblue;
+    border-color: white;
+  }
+
+  * {
+    font-family: sans-serif;
+  }
