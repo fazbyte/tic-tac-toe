@@ -2,14 +2,8 @@ import Controller from '@ember/controller';
 
 function getWinner(board) {
     const winMatrix = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
+        [0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],
+        [1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]
       ];
       for (let i = 0; i < winMatrix.length; i++) {
         const [a, b, c] = winMatrix[i];
@@ -28,19 +22,17 @@ export default Controller.extend({
             if (this.get('model.winner') || board[position]) {
                 return;
             }
-            console.log("##################");
-            console.log(this.model);
-            // const model = this.get('model')
-            const nextPlayer = this.get('model.nextPlayer') 
+            const model = this.get('model')
+            const nextPlayer = model.nextPlayer
             board[position] = nextPlayer == 'X' ? 'X' : 'O';
             this.set('model.board',board)
             this.set('model.nextPlayer', nextPlayer == 'X' ? 'O' : 'X')
             if (getWinner(board)){
                 this.set('model.winner',getWinner(board))
-                if (this.get('model.winner') == 'X') {
-                    this.set('model.playerXScore', this.get('model.playerXScore')+1)
+                if (model.winner == 'X') {
+                    this.set('model.playerXScore', model.playerXScore+1)
                 } else if (this.get('model.winner') == 'O')  {
-                    this.set('model.playerOScore', this.get('model.playerOScore')+1)
+                    this.set('model.playerOScore', model.playerOScore+1)
                 }
             }
         },
