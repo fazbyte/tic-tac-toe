@@ -1,36 +1,40 @@
 <div class="jumbo">
   <div class="right tomster"></div>
   <h2>Welcome to Play Board!</h2>
-    <button {{action "newGame" 'X'}}>Start New Game With X</button>
-    <button {{action "newGame" 'O'}}>Start New Game With O</button>
+  
+  <button {{action "newGame" "X"}}>Start New Game With X</button>
+  <button {{action "newGame" "O"}}>Start New Game With O</button>
 
-    <button {{action "reset"}}>Reset All</button>
+  <button {{action "reset"}}>Reset All</button>
+  <br><br>
 
-    <br/> <br/>
+  {{#each this.model.boardPosition as |b|}}
+    <div class="row">
+      {{#each b as |k|}}
+        <button id="square{{k}}" class="button" {{action "buttonClick" k}}>{{get this.model.board k}}</button>
+      {{/each}}
+    </div>
+  {{/each}}
 
-    {{#each this.model.boardPosition as |b bi|}}
-        <div class="row">
-            {{#each b as |k ki|}}
-                <button id="square{{k}}" class="button" {{action "buttonClick" k}}>{{get this.model.board k}}</button>
-             {{/each}}
-        </div>
-    {{/each}}
+  <h3>Winner : <div id="winner_result">{{this.model.winner}}</div></h3>
+  <br><br>
+ 
+  Scorecard :
 
-   <h3>Winner : <div id="winner_result">{{this.model.winner}}</div></h3>
-
-   
-   Scorecard :
-
-   <table> 
-       <tr>
-           <th>Player X</th>
-           <th>Player O</th>
-       </tr>
-       <tr>
-           <td>{{this.model.playerXScore}}</td>
-           <td>{{this.model.playerOScore}}</td>
-       </tr>
-   </table>
+  <table> 
+    <thead>
+      <tr>
+        <th>Player X</th>
+        <th>Player O</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{this.model.playerXScore}}</td>
+        <td>{{this.model.playerOScore}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 
 </div>
